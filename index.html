@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0,user-scalable=no">
+		<title>百度api接口</title>
+		<script type="text/javascript" src="dist/js/angular.js">	
+		</script><script type="text/javascript" src="dist/js/angular-route.js"></script>
+		<!--<script type="text/javascript" src="dist/js/ionic.bundle.js"></script>-->
+		<!--<link rel="stylesheet" href="dist/css/ionic.css" />-->
+	</head>
+	<style>
+	*{
+		padding:0;
+		margin:0;
+		text-decoration: none;
+		font-size: 14px;
+		list-style: none;
+	}
+	header{
+		width:100%;
+		height:50px;
+		background-color: #2F4F4F;
+		position: fixed;
+		z-index: 10;
+		top: 0px;
+	}
+		header h1{
+			color: #EF473A;
+			font-size: xx-large;
+			text-align: left;
+			margin-left:80px;
+			line-height: 50px;
+			font-family:"Comic Sans MS";
+		}
+		header button{
+			border-radius: 10px;
+			position: absolute;
+			right:0px;
+			top:5px;
+			text-align: center;
+			height:40px;
+			width:80px;
+			line-height: 40px;
+			font-size: 23px;
+			color: #F2F2F2;
+			background: #2F4F4F;
+			
+		}
+		aside{
+			height:40px;
+			width:100%;
+			position: absolute;
+			z-index: 9;
+			top:50px;
+			background: #0A9DC7;
+		}
+		aside li{
+			width:20%;
+			height:40px;
+			color: #F1F2F3;
+			line-height:40px;
+			text-align:center;
+			font-size: 20px;
+			font-family:"Comic Sans MS";
+			float:left;
+			
+		}
+		aside .isNavRed{
+			color:#FF3B30;
+		}
+		aside a{
+			text-decoration: none;
+		}
+	</style>
+	<body>
+		<header>
+			<h1>野生APP</h1>			
+	        </a><button class="button">返回</button>
+		</header>
+		<aside>
+			<nav></nav>
+		</aside>
+		<div ng-view=""></div>
+	</body>
+	<script>
+		var myApp = angular.module('myApp',["ngRoute"]);
+		//config是路由的固定写法，$routeProvider是关键词
+		//otherwise就是如果页面跳转不成功，跳回指定页面。
+		myApp.config(function($routeProvider){
+			$routeProvider.when('/ab',{
+				controller: 'myCtrl',
+				templateUrl: 'view/aa.html'
+			}).when('/bc',{
+				controller:'myCtrl2',
+				templateUrl:'view/bb.html'
+			}).when('/cd',{
+				controller:'myCtrl3',
+				templateUrl:'view/cc.html'
+			}).when('/de',{
+				controller:'myCtrl4',
+				templateUrl:'view/dd.html'
+			}).otherwise({
+				redirectTo: '/ab'
+			})
+		})
+		
+		myApp.directive('nav',['$location',function($location){
+			return{
+				restrict:'EAC',
+				replace:true,
+				transclude: true,
+				template:'<ul id="myNav">'+
+							'<a ng-href="#/ab"><li class="isNavRed">首页</li></a>'+
+							'<a ng-href="#/bc"><li>星座</li></a>'+
+							'<a ng-href="#/cd"><li>笑话</li></a>'+
+							'<a ng-href="#/de"><li>股票</li></a>'+
+						'</ul>',
+				link:function(scope, element, attrs){
+					var nav = document.getElementById('myNav')
+					var navs = nav.getElementsByTagName('li')
+				}
+			}
+		}])
+		//$scope.change类似于命名一个change函数，当input值变化的时候调用change函数，函数里面有要从php里面获取的信息
+		//params里面是api接口里的参数，里面的ip是php里面的变量ip，$scope.ips就是input里面的要绑定的值
+		myApp.controller('myCtrl',['$scope','$http',function($scope,$http){
+			$scope.num = 10
+			$scope.loadMore = function(){
+				$scope.num+=5
+				$http.get("baiduapi.php",{
+					params:{
+						num:$scope.num,
+						page:1
+					}
+				}).success(function(data){
+//					console.log(data)
+					$scope.news = data.newslist;
+				})	
+			}
+				$http.get("baiduapi.php",{
+				params:{
+					num:$scope.num,
+					page:1
+				}
+				}).success(function(data){
+//					console.log(data)
+					$scope.news = data.newslist;
+				})	
+		}])
+		//#/bc
+		myApp.controller('myCtrl2',['$scope','$http',function($scope,$http){			
+			$scope.change2=function(){
+//				$http.get("baiduapi_2.php",{
+				$http({
+					//method:'get',
+					url:'http://apis.baidu.com/bbtapi/constellation/constellation_query',
+					headers:{
+						apikey:'e16d0d4739955b34050e93a24f687e11'
+					},
+					params:{
+						consName:$scope.names,
+						type:$scope.times
+					}
+				}).success(function(data){
+					console.log(data)
+					$scope.datas = data;
+				});
+			}
+			
+		}]);
+		//#/cd
+		myApp.controller('myCtrl3',['$scope','$http',function($scope,$http){
+			$scope.pages=1;
+			$scope.change3=function(){
+				$http.get('baiduapi_3.php',{
+					params:{
+						page:$scope.pages
+					}
+				}).success(function(data){
+//					console.log(data)
+					$scope.datas = data.showapi_res_body.contentlist;
+//					console.log($scope.datas)
+				})
+			}
+			$scope.change3();
+		}])
+		//#/de
+		myApp.controller('myCtrl4',['$scope','$http',function($scope,$http){
+			$scope.change4=function(){
+				$http.get('baiduapi_4.php',{
+					params:{
+						stockid:$scope.stockid
+					}
+				}).success(function(data){
+//				console.log(data)
+					$scope.datas=data.retData;
+					console.log($scope.datas)
+				})
+			}
+			
+		}])
+	</script>
+</html>

@@ -1,0 +1,80 @@
+<div class="article">
+	<div class="bg"><img src="image/horoscope_.jpg" /></div>
+	<section class="sect">
+		<h1>星座运势查询</h1>
+		<form>
+			<label>
+				<input type="text"  ng-model="names" name="星座" placeholder="请输入星座名" />
+			</label>
+			<label>
+				<input type="text"  ng-model="times" name="时间" placeholder="请输入时间" />
+			</label>
+			<input type="submit" value="查询" ng-click="change2()" />
+		</form>
+	</section>
+	<p>{{datas}}</p>
+</div>
+
+
+<style>
+	.article{
+		margin-top:90px;
+	}
+	.article .bg{
+		height:250px;
+		margin-bottom: 5px;
+		margin:0 auto;
+		width:300px;
+	}
+	.article .bg img{
+		width:300px;
+		height:250px;
+	}
+	.article section {
+		height: auto;
+		border-bottom: 1px solid #e8e8e8;
+	}
+	.article section p {
+		/*text-align: center;*/
+		margin-top: 10px;
+		margin-left: 10px;
+	}
+	input{
+		border: 1px solid #007AFF;
+	}
+	.sect{
+		width:300px;
+		height:380px;
+		text-align: center;
+		margin:0 auto;
+	}
+	.sect > h1{
+		margin:50px 0 16px 0;
+		padding:0;
+		font-size: 32px;
+		color:brown;
+		font-weight: bold;
+		
+	}
+	.sect input[type="text"]{
+		width:100%;
+		border:1px solid #314d89;
+		outline:none;
+		padding:12px 20px;
+		color:#afafaf;
+		font-weight: 700;
+		font-family: "Lato",sans-serif;
+		cursor: pointer;
+	}
+	.sect input[type="submit"]{
+		display: block;
+		margin:20px auto 0 auto;
+		width: 100%;
+		border:none;
+		border-radius: 3px;
+		padding: 8px;
+		font-size: 17px;
+		color:#636363;
+		font-weight: 700;
+	}
+</style>

@@ -1,0 +1,29 @@
+<div class="article">
+	<!--<label class="item item-input" >
+    	<span class="input-label">关键词：</span>
+    <input type="text" ng-model="pages" ng-change="change3()">
+  	</label>-->
+	<input type="text" ng-model="pages" ng-change="change3()"/>
+	<section ng-repeat="dat in datas">
+		<p >{{dat.text}}</p>
+	</section>
+	
+</div>
+
+<style>
+	.article{
+		margin-top:100px;
+	}
+	.article section {
+		height: auto;
+		border-bottom: 1px solid #e8e8e8;
+	}
+	.article section p {
+		/*text-align: center;*/
+		margin-top: 10px;
+		margin-left: 10px;
+	}
+	input{
+		border: 1px solid #007AFF;
+	}
+</style>

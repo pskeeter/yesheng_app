@@ -1,0 +1,107 @@
+<div class="article">
+	<section>
+		<!--<input type="text" ng-model="names"/>
+		<input type="text" ng-model="times"/>
+		<button ng-click="change2()">选择</button>-->
+		<input type="text" ng-model="stockid" ng-change="change4()"/>
+		<table border="1" cellspacing="0px" bordercolor="yellow">
+			<caption>今日股市</caption>
+			<tr>
+				<th class="bold">指数</th>
+				<th>{{datas.stockinfo[0].name}}</th>
+				<th>道琼斯</td>
+				<th>恒生指数</th>
+				<th>纳斯达克</th>
+				<th>上证指数</th>
+				<th>深证指数</th>
+			</tr>
+			<tr>
+				<td class="bold">代码</td>
+				<td>{{datas.stockinfo[0].code}}HK</td>
+				<td>INDU</td>
+				<td>110000</td>
+				<td>IXIC</td>
+				<td>000001</td>
+				<td>399001</td>
+			</tr>
+			<tr>
+				<td class="bold">今开</td>
+				<td>{{datas.stockinfo[0].lPrice}}</td>
+				<td>{{datas.market.DJI.startdot}}</td>
+				<td>{{datas.market.HSI.startdot}}</td>
+				<td>{{datas.market.IXIC.startdot}}</td>
+				<td>{{datas.market.shanghai.startdot}}</td>
+				<td>{{datas.market.shenzhen.startdot}}</td>
+			</tr>
+			<tr>
+				<td class="bold">现价</td>
+				<td>{{datas.stockinfo[0].currentPrice}}</td>
+				<td>{{datas.market.DJI.curdot}}</td>
+				<td>{{datas.market.HSI.curdot}}</td>
+				<td>{{datas.market.IXIC.curdot}}</td>
+				<td>{{datas.market.shanghai.curdot}}</td>
+				<td>{{datas.market.shenzhen.curdot}}</td>
+			</tr>
+			<tr>
+				<td class="bold">涨跌幅</td>
+				<td>{{datas.stockinfo[0].growth}}%</td>
+				<td>{{datas.market.DJI.rate}}%</td>
+				<td>{{datas.market.HSI.rate}}%</td>
+				<td>{{datas.market.IXIC.rate}}%</td>
+				<td>{{datas.market.shanghai.rate}}%</td>
+				<td>{{datas.market.shenzhen.rate}}%</td>
+			</tr>
+		</table>
+	</section>
+</div>
+
+
+<style>
+	.article{
+		margin-top:90px;
+	}
+	.article .bg img{
+		width:100%;
+		height:250px;
+	}
+	.article section {
+		height: auto;
+		border-bottom: 1px solid #e8e8e8;
+	}
+	.article section p {
+		/*text-align: center;*/
+		margin-top: 10px;
+		margin-left: 10px;
+	}
+	
+	caption{
+		width:
+	}
+	input{
+		border: 1px solid #007AFF;
+	}
+	caption{
+		font-size:30px;
+		color:darkgoldenrod;
+	}
+	table{
+		border-collapse: collapse;
+	}
+	tbody{
+		width:100%;
+		height:auto;
+		border-radius: 50px;
+		text-align: center;
+	}
+	th{
+		padding:3px;
+		background:#FAFAFA
+	}
+	td{
+		background:#dcddc0;
+		padding:3px;
+	}
+	.bold{
+		font-weight: bold;
+	}
+</style>

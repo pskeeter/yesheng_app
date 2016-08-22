@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+		<title>导航页</title>
+		<!-- Link Swiper's CSS -->
+		<link rel="stylesheet" href="dist/css/swiper-3.3.1.min.css">
+
+		<!-- Demo styles -->
+		<style>
+			body {
+				background: #eee;
+				font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+				font-size: 14px;
+				color: #000;
+				margin: 0;
+				padding: 0;
+			}
+			
+			.swiper-container {
+				width: 300px;
+				height: 500px;
+				margin: 20px auto;
+			}
+			
+			.swiper-slide {
+				text-align: center;
+				font-size: 18px;
+				background: #fff;
+				/* Center slide text vertically */
+				display: -webkit-box;
+				display: -ms-flexbox;
+				display: -webkit-flex;
+				display: flex;
+				-webkit-box-pack: center;
+				-ms-flex-pack: center;
+				-webkit-justify-content: center;
+				justify-content: center;
+				-webkit-box-align: center;
+				-ms-flex-align: center;
+				-webkit-align-items: center;
+				align-items: center;
+			}
+			
+			.paOne {
+				background-color: burlywood;
+			}
+			
+			.paSec {
+				background-color: darkgray;
+			}
+			
+			.paTre {
+				background-color: brown;
+			}
+			
+			.paFor {
+				background-color: lightsalmon;
+			}
+			
+			.swiper-slide .logo {
+				width: 200px;
+				height: 200px;
+				display: block;
+				border: 1px solid #FFFFFF;
+				border-color: rgba(255, 255, 255, 0.5);
+				text-align: center;
+				line-height: 200px;
+				border-radius: 50%;
+				font-size: 40px;
+				color: #fff;
+				position: absolute;
+				top: 15%;
+				left: 50%;
+				margin-left: -100px;
+				text-decoration: none;
+			}
+			.swiper-slide .slip a{
+				font-size: 20px;
+				text-decoration: none;
+			}
+		</style>
+	</head>
+
+	<body>
+		<!-- Swiper -->
+		<div class="swiper-container">
+			<div class="swiper-wrapper">
+				<div class="swiper-slide paOne">
+					<a class="logo" href="index.html#/ab">新闻</a>
+					<p class="slip"><a href="">-->跳过<--</a></p>
+				</div>
+				<div class="swiper-slide paSec">
+					<a  class="logo" href="index.html#/ab">星座</a>
+					<p class="slip"><a href="">-->跳过<--</a></p>
+				</div>
+				<div class="swiper-slide paTre">
+					<a  class="logo" href="index.html#/ab">笑话</a>
+					<p class="slip"><a href="">-->跳过<--</a></p>
+				</div>
+				<div class="swiper-slide paFor">
+					<a class="logo"  href="index.html#/ab">股票</a>
+					<p class="slip"><a href="">-->跳过<--</a></p>
+				</div>
+			</div>
+		</div>
+
+		<!-- Swiper JS -->
+		<script src="dist/js/swiper-3.3.1.min.js"></script>
+
+		<!-- Initialize Swiper -->
+		<script>
+			var swiper = new Swiper('.swiper-container');
+		</script>
+	</body>
+
+</html>
